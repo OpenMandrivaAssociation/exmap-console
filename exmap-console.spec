@@ -1,4 +1,5 @@
 %define	name	exmap-console
+%define kernelname exmap
 %define	version	0.4.1
 %define	release	%mkrel 1
 
@@ -45,18 +46,18 @@ rm -rf $RPM_BUILD_ROOT
 ######
 
 install -d -m 755 %{buildroot}%{_prefix}/src
-cp -a kernel %{buildroot}%{_prefix}/src/%{name}-%{version}
+cp -a kernel %{buildroot}%{_prefix}/src/%{kernelname}-%{version}
 
-cat > %{buildroot}%{_prefix}/src/%{name}-%{version}/dkms.conf <<EOF
+cat > %{buildroot}%{_prefix}/src/%{kernelname}-%{version}/dkms.conf <<EOF
 
 PACKAGE_VERSION="%{version}"
 
 # Items below here should not have to change with each driver version
-PACKAGE_NAME="%{name}"
+PACKAGE_NAME="%{kernelname}"
 MAKE[0]="make -C \${kernel_source_dir} SUBDIRS=\${dkms_tree}/\${PACKAGE_NAME}/\${PACKAGE_VERSION}/build modules"
 CLEAN="make clean"
 
-BUILT_MODULE_NAME[0]="\$PACKAGE_NAME-module"
+BUILT_MODULE_NAME[0]="\$PACKAGE_NAME"
 DEST_MODULE_LOCATION[0]="/kernel/3rdparty/\$PACKAGE_NAME/"
 
 AUTOINSTALL=yes
@@ -68,15 +69,15 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 
 %post
-dkms add -m %{name} -v %{version} --rpm_safe_upgrade
-dkms build -m %{name} -v %{version} --rpm_safe_upgrade
-dkms install -m %{name} -v %{version} --rpm_safe_upgrade
+dkms add -m %{kernelname} -v %{version} --rpm_safe_upgrade ||:
+dkms build -m %{kernelname} -v %{version} --rpm_safe_upgrade ||:
+dkms install -m %{kernelname} -v %{version} --rpm_safe_upgrade
 
 %preun
-dkms remove -m %{name} -v %{version} --rpm_safe_upgrade --all ||:
+dkms remove -m %{kernelname} -v %{version} --rpm_safe_upgrade --all ||:
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL README 
 %{_bindir}/*
-%{_prefix}/src/%{name}-%{version}
+%{_prefix}/src/%{kernelname}-%{version}
