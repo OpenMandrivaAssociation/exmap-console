@@ -15,7 +15,7 @@ URL:		http://projects.o-hand.com/exmap-console
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires(post):	dkms
 Requires(preun):	dkms
-BuildRequires:	readline-devel termcap-devel help2man
+BuildRequires:	readline-devel termcap-devel help2man glib2-devel
 
 %description
 Exmap-console is a suite of command line applications developed around the
