@@ -3,7 +3,7 @@
 %define	version	0.4.1
 %define	release	%mkrel 1
 
-Summary:	Mmemory analysis tool
+Summary:	Memory analysis tool
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
