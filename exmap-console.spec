@@ -1,7 +1,7 @@
 %define	name	exmap-console
 %define kernelname exmap
 %define	version	0.4.1
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 Summary:	Memory analysis tool
 Name:		%{name}
@@ -11,6 +11,7 @@ License:	GPL
 Group:		Development/Other
 Source:		http://projects.o-hand.com/sources/exmap-console/%{name}-%{version}.tgz
 Patch0:		exmap-console-0.4.1-no_module.patch
+Patch1:		exmap-console-2.6.26.patch
 URL:		http://projects.o-hand.com/exmap-console
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires(post):	dkms
@@ -29,6 +30,7 @@ The suite contains three applications: exmap client (exmap), exmap daemon
 %prep
 %setup -q 
 %patch0 -p1
+%patch1 -p2
 sed -i 's/-lreadline/-ltermcap -lreadline/' configure.ac
 
 %build
