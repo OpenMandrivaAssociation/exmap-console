@@ -1,7 +1,7 @@
 %define	name	exmap-console
 %define kernelname exmap
 %define	version	0.4.1
-%define	release	%mkrel 5
+%define	release	%mkrel 6
 
 Summary:	Memory analysis tool
 Name:		%{name}
