@@ -83,3 +83,42 @@ dkms remove -m %{kernelname} -v %{version} --rpm_safe_upgrade --all ||:
 %doc AUTHORS COPYING ChangeLog INSTALL README 
 %{_bindir}/*
 %{_prefix}/src/%{kernelname}-%{version}
+
+
+%changelog
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 0.4.1-8mdv2011.0
++ Revision: 618248
+- the mass rebuild of 2010.0 packages
+
+* Thu Sep 10 2009 Thierry Vignaud <tv@mandriva.org> 0.4.1-7mdv2010.0
++ Revision: 437506
+- rebuild
+
+* Sat Mar 14 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.4.1-6mdv2009.1
++ Revision: 354896
+- rebuild for latest readline
+
+* Fri Sep 12 2008 Pascal Terjan <pterjan@mandriva.org> 0.4.1-5mdv2009.0
++ Revision: 284120
+- Bump the release and pray
+- Add upstream patch to build on new kernel
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0.4.1-3mdv2009.0
++ Revision: 245000
+- rebuild
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0.4.1-1mdv2008.1
++ Revision: 136407
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Pascal Terjan <pterjan@mandriva.org>
+    - Fix typo in summary
+
+* Thu Jul 19 2007 Pascal Terjan <pterjan@mandriva.org> 0.4.1-1mdv2008.0
++ Revision: 53610
+- BuildRequires glib2-devel
+- Import exmap-console
+
