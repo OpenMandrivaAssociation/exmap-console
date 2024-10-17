@@ -12,7 +12,7 @@ Group:		Development/Other
 Source:		http://projects.o-hand.com/sources/exmap-console/%{name}-%{version}.tgz
 Patch0:		exmap-console-0.4.1-no_module.patch
 Patch1:		exmap-console-2.6.26.patch
-URL:		http://projects.o-hand.com/exmap-console
+URL:		https://projects.o-hand.com/exmap-console
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires(post):	dkms
 Requires(preun):	dkms
